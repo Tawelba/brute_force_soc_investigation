@@ -1,0 +1,13 @@
+title: Multiple Failed SSH Logins From One Source
+logsource:
+ product: linux
+ service: sshd
+detection:
+ failed:
+ message|contains: 'Failed password'
+ timeframe: 3s
+ condition: failed | count() > 4 by src_ip
+level: high
+tags:
+ - attack.credential_access
+ - attack.t11
