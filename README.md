@@ -18,7 +18,7 @@ A home-lab SOC investigation: detected and investigated an SSH brute force attac
 ## Evidence
 
 ![failures](screenshots/failed-logins.png)
-![breach](screenshots/accepted-login.png)
+![breach](screenshots/accepted-logins.png)
 
 ## Detection
 
