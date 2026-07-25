@@ -26,7 +26,7 @@ See [detection/sigma.yml](detection/sigma.yml) for a portable Sigma rule that de
 
 ## Full write-up
 
-See [incident-report.md](incident-report.md) for the full incident report: summary, affected assets, indicators of compromise, timeline, analysis, MITRE ATT&CK mapping, impact, remediation, and lessons learned.
+See [incident_report.md](incident_report.md) for the full incident report: summary, affected assets, indicators of compromise, timeline, analysis, MITRE ATT&CK mapping, impact, remediation, and lessons learned.
 
 ## Honest framing
 
