@@ -1,0 +1,88 @@
+{
+  "scope": "Synthetic fixtures and parser validation only; no live SIEM execution.",
+  "window": "half-open sliding (t-60s, t]; deployment backend semantics must be checked",
+  "dependencies": {
+    "pysigma": "2.0.1",
+    "PyYAML": "6.0.3"
+  },
+  "sigma_parser_passed": true,
+  "local_links_passed": true,
+  "cases": [
+    {
+      "case": "reported_four_failure_pattern_synthetic",
+      "expected": true,
+      "observed": true,
+      "passed": true
+    },
+    {
+      "case": "three_failures_below_threshold",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    },
+    {
+      "case": "four_failures_outside_window",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    },
+    {
+      "case": "separate_sources_do_not_combine",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    },
+    {
+      "case": "separate_accounts_do_not_combine",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    },
+    {
+      "case": "separate_hosts_do_not_combine",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    },
+    {
+      "case": "successful_logins_not_counted",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    },
+    {
+      "case": "unrelated_messages_not_counted",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    },
+    {
+      "case": "inside_window_boundary",
+      "expected": true,
+      "observed": true,
+      "passed": true
+    },
+    {
+      "case": "exact_window_boundary_excluded",
+      "expected": false,
+      "observed": false,
+      "passed": true
+    },
+    {
+      "case": "unordered_input_is_sorted",
+      "expected": true,
+      "observed": true,
+      "passed": true
+    },
+    {
+      "case": "benign_four_typos_can_alert",
+      "expected": true,
+      "observed": true,
+      "passed": true
+    },
+    {
+      "case": "missing_grouping_field_rejected",
+      "passed": true
+    }
+  ]
+}

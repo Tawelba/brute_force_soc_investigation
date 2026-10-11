@@ -1,13 +1,44 @@
-title: Multiple Failed SSH Logins From One Source
+title: SSH Failed Password Event
+name: ssh_failed_password
+id: 27c7bb48-036f-49ee-a994-2ec4ab31397e
+status: experimental
+description: Selects failed SSH password events; parsed grouping fields are required by the accompanying correlation.
+author: Shaibu Fuseini
+date: 2026-10-11
 logsource:
- product: linux
- service: sshd
+  product: linux
+  service: sshd
 detection:
- failed:
- message|contains: 'Failed password'
- timeframe: 3s
- condition: failed | count() > 4 by src_ip
-level: high
+  selection:
+    message|contains: 'Failed password'
+  condition: selection
+falsepositives:
+  - Legitimate password mistakes or misconfigured clients
+level: low
 tags:
- - attack.credential_access
- - attack.t11
+  - attack.credential_access
+  - attack.t1110
+---
+title: Repeated SSH Password Failures For One Account And Source
+id: d2f7960b-a04f-4c85-85a1-723a5bc6b0b6
+status: experimental
+description: Training threshold of at least four failed password events within 60 seconds on the same host from the same source for the same account. Does not correlate successful login.
+author: Shaibu Fuseini
+date: 2026-10-11
+correlation:
+  type: event_count
+  rules:
+    - ssh_failed_password
+  group-by:
+    - host
+    - src_ip
+    - username
+  timespan: 60s
+  condition:
+    gte: 4
+falsepositives:
+  - Repeated legitimate password mistakes or automated clients using stale credentials
+level: medium
+tags:
+  - attack.credential_access
+  - attack.t1110
